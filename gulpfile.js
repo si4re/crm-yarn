@@ -44,9 +44,6 @@ gulp.task('build_libs', function () {
             'node_modules/popper/dist/js/index.js',
             'node_modules/bootstrap/dist/js/bootstrap.js',
 
-            //, 'bower_components/**//font-awesome/css/font-awesome.min.css'
-            //, 'bower_components/**/font-awesome/fonts/*.*'
-
         ])
         //.pipe(uglify()) // not work xlsx@0.11.8
         .pipe(concat('libs.js'))
@@ -81,13 +78,21 @@ gulp.task('concat_angular', function () {
         .pipe(gulp.dest('./app'));
 });
 
-gulp.task('dev', ['build_libs', 'concat_angular', 'build_css'], function () {
+
+
+gulp.task('font-awesome', function () {
+    return gulp.src([
+
+            'node_modules/font-awesome/fonts/*'
+        ])
+        .pipe(gulp.dest('./app/fonts'));
+});
+
+
+gulp.task('dev', ['build_libs', 'concat_angular', 'build_css', 'font-awesome'], function () {
 
 });
 
 
-gulp.task('watch', function () {
-    gulp.watch('/app/**/*.js', ['dev']);
- });
 
 
