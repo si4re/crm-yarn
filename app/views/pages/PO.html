@@ -12,6 +12,7 @@ PO.html
         border: 1px solid grey;
         border-collapse: collapse;
         padding: 5px;
+        text-align: center;
     }
     
     table tr:first-child {
@@ -19,6 +20,8 @@ PO.html
         font-weight: 900;   */
     }
 </style>
+
+
 
 
 <div ng-controller="mainController">{{currentUser.role}}</div>
@@ -69,9 +72,9 @@ PO.html
                                     </div>
                                 </td>
                                 <td ng-if="currentUser.role == 'admin'">{{i.orderVkNokia}}</td>
-                                <td ng-if="currentUser.role == 'admin'">{{i.orderADVNokia}}</td>
-                                <td ng-if="currentUser.role == 'admin'">{{i.totalSummADV}}</td>
-                                <td ng-if="currentUser.role == 'admin'">{{i.totalSummSub}}</td>
+                                <td ng-if="currentUser.role == 'admin'">{{i.orderADVNokia}}</td>  
+                                <td ng-if="currentUser.role == 'admin'">{{    (i.totalSummADV)    }}      </td>
+                                <td ng-if="currentUser.role == 'admin'">{{    (i.totalSummSub)   }}</td>
 
 
 

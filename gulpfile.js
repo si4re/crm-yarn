@@ -93,6 +93,8 @@ gulp.task('dev', ['build_libs', 'concat_angular', 'build_css', 'font-awesome'], 
 
 });
 
-
+gulp.task('watch', function() {
+    gulp.watch('./app/**/*.js', ['dev']);
+  });
 
 

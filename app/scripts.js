@@ -595,12 +595,11 @@ myApp.run(function(editableOptions, editableThemes) {
 });
 
 */
-
 myApp.controller('allPOCtrl', function ($scope, $http, $timeout, sharePO) {
 
 
     $scope.message = "allPOCtrl message";
- 
+
 
 
 
@@ -613,9 +612,34 @@ myApp.controller('allPOCtrl', function ($scope, $http, $timeout, sharePO) {
 
         $scope.getProjectData = [];
         $http.get('/api/PO').then(function (response) { // old  $http.get("/projects").then(function(response) {
+
+
+            console.log(response.data[1].totalSummADV);
+
+
+            for (var i in response.data) {
+
+                if (response.data[i].hasOwnProperty('totalSummADV')) {
+                    if (!isNaN(parseFloat(response.data[i].totalSummADV))) {
+                        response.data[i].totalSummADV = (parseFloat(response.data[i].totalSummADV)).toLocaleString('ru'); //
+                    }
+                }
+
+                if (response.data[i].hasOwnProperty('totalSummSub')) {
+                    if (!isNaN(parseFloat(response.data[i].totalSummSub))) {
+                        response.data[i].totalSummSub = (parseFloat(response.data[i].totalSummSub)).toLocaleString('ru');
+                    }
+                }
+            }
+
+            
+
             $scope.getProjectData = response.data;
 
             console.log(response.data);
+
+            // console.log(  (parseFloat($scope.getProjectData[0].totalSummADV)).toLocaleString('ru')       );
+
 
         }).then(function (response) {});
     };
@@ -727,7 +751,7 @@ myApp.controller('allPOCtrl', function ($scope, $http, $timeout, sharePO) {
 
 
 
-   
+
 
 
 
