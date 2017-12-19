@@ -6,7 +6,7 @@
 
 
 
-detail.html
+<!--  detail.html  -->
 
 <div ng-controller="urlattrController">
     <!-- table uploaded files -->
@@ -194,9 +194,9 @@ detail.html
                     <td>1с</td>
                     <td>Позиция</td>
                     <td>Адрес</td>
-                    <td>СМР</td>
-                    <td>ПНР</td>
-                    <td>Отчет для 1с</td>
+                    <td>ППО</td>
+                    <td>СМР+ПНР</td>
+                    <td>Отчет</td>
                     <tr ng-repeat="k in IdProjectData.oneC">
                         <td>
                             <a class="text-muted" ng-href="#!/{{IdProjectData._id}}/{{k.number}}">{{k.number}}</a>
@@ -205,29 +205,33 @@ detail.html
                         <td>
                             <a class="text-muted" ng-href="#!/route/maps/{{IdProjectData._id}}">{{k.address}}</a>
                         </td>
+
                         <td class="centerCell">
-                            {{k.CMR}}
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" value="myvalue" ng-checked="k.CMR" disabled>
+
+                                
+                            {{k.CMR}} 
+
+                          <!--    <label class="custom-control custom-checkbox">
+                           <input type="checkbox" class="custom-control-input" value="myvalue" ng-checked="k.CMR" disabled>     
                                 <span class="custom-control-indicator"></span>
-                            </label>
+                            </label>  !--> 
                         </td>
 
                         <td class="centerCell">
                             {{k.PNR}}
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" value="myvalue" ng-checked="k.PNR" disabled>
+                         <!--    <label class="custom-control custom-checkbox">
+                                  <input type="checkbox" class="custom-control-input" value="myvalue" ng-checked="k.PNR" disabled>      
                                 <span class="custom-control-indicator"></span>
-                            </label>
+                            </label>  !--> 
                         </td>
 
 
                         <td class="centerCell">
                             {{k.report}}
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" value="myvalue" ng-checked="k.report" disabled>
+                         <!--  <label class="custom-control custom-checkbox">
+                                   <input type="checkbox" class="custom-control-input" value="myvalue" ng-checked="k.report" disabled>      
                                 <span class="custom-control-indicator"></span>
-                            </label>
+                            </label>  !--> 
                         </td>
 
                         <td>

@@ -14,6 +14,7 @@ myApp.controller('allPOCtrl', function ($scope, $http, $timeout, sharePO) {
         console.log('_________________       getAllProjectData         ________________');
 
         $scope.getProjectData = [];
+        $scope.allTotalSummADV = 0;
         $http.get('/api/PO').then(function (response) { // old  $http.get("/projects").then(function(response) {
 
 
@@ -23,9 +24,13 @@ myApp.controller('allPOCtrl', function ($scope, $http, $timeout, sharePO) {
             for (var i in response.data) {
 
                 if (response.data[i].hasOwnProperty('totalSummADV')) {
+
                     if (!isNaN(parseFloat(response.data[i].totalSummADV))) {
-                        response.data[i].totalSummADV = (parseFloat(response.data[i].totalSummADV)).toLocaleString('ru'); //
+                        response.data[i].totalSummADV = (parseFloat(response.data[i].totalSummADV)).toLocaleString('ru');
+
                     }
+
+
                 }
 
                 if (response.data[i].hasOwnProperty('totalSummSub')) {
@@ -33,9 +38,10 @@ myApp.controller('allPOCtrl', function ($scope, $http, $timeout, sharePO) {
                         response.data[i].totalSummSub = (parseFloat(response.data[i].totalSummSub)).toLocaleString('ru');
                     }
                 }
+
+
             }
 
-            
 
             $scope.getProjectData = response.data;
 
@@ -56,7 +62,6 @@ myApp.controller('allPOCtrl', function ($scope, $http, $timeout, sharePO) {
 
     // OK  create new PO - PO.html
     $scope.postNewPO = function (numberPO) {
-
 
         function isNumeric(n) {
             return !isNaN(parseFloat(n)) && isFinite(n) && n.length >= 2 && n.length <= 20;
@@ -155,6 +160,41 @@ myApp.controller('allPOCtrl', function ($scope, $http, $timeout, sharePO) {
 
 
 
+
+
+
+    // OK  create new User - PO.html
+    $scope.postNewUser = function (email, password, role) {
+
+      
+
+        var data = {
+            email: email,
+            password: password,
+            role: role
+        };
+
+        $http.post("/api/auth/register", data).then(function (response) {
+
+            if (response.data.error) { // all error check
+
+                $scope.errmsg = response.data.error.errmsg; // show message
+
+                $timeout(function () { // hide error in 3,5 sec
+                    $scope.errmsg = false;
+                }, 3500);
+            }
+
+            console.log(response.data);
+
+
+        }, function (reject) {
+            console.log(reject);
+        });
+
+
+
+    } // end function
 
 
 

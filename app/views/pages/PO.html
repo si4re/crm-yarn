@@ -1,11 +1,14 @@
-
-PO.html
+ <!--  PO.html -->
 
 <style>
     .lines {
         margin-bottom: 30px;
     }
-    
+
+    .padding_userAdd {
+        margin-top: 30px;
+    }
+
     table,
     th,
     td {
@@ -14,7 +17,7 @@ PO.html
         padding: 5px;
         text-align: center;
     }
-    
+
     table tr:first-child {
         /*  background-color: #f1f1f1;
         font-weight: 900;   */
@@ -30,9 +33,10 @@ PO.html
 
 <div ng-controller="allPOCtrl">
 
-    {{message}}
+    <!--   {{message}}  -->
+
     <div ng-if="currentUser.role == 'admin'" class="alert alert-danger" ng-hide="!errmsg" role="alert">
-        <strong> Error -   </strong> {{errmsg}}</div>
+        <strong> Error - </strong> {{errmsg}}</div>
 
 
     <div class="container">
@@ -63,8 +67,8 @@ PO.html
                                         <div ng-if="currentUser.role == 'admin'">
 
                                             <button aria-label="Close" class="close" ng-click="deleteItem(getProjectData, i); deletePO(i._id);  " type="button">
-            <span aria-hidden="true">&times;</span>
-          </button>
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
 
                                         </div>
                                         <!--  end auth  !-->
@@ -72,9 +76,9 @@ PO.html
                                     </div>
                                 </td>
                                 <td ng-if="currentUser.role == 'admin'">{{i.orderVkNokia}}</td>
-                                <td ng-if="currentUser.role == 'admin'">{{i.orderADVNokia}}</td>  
-                                <td ng-if="currentUser.role == 'admin'">{{    (i.totalSummADV)    }}      </td>
-                                <td ng-if="currentUser.role == 'admin'">{{    (i.totalSummSub)   }}</td>
+                                <td ng-if="currentUser.role == 'admin'">{{i.orderADVNokia}}</td>
+                                <td ng-if="currentUser.role == 'admin'">{{ (i.totalSummADV) }} </td>
+                                <td ng-if="currentUser.role == 'admin'">{{ (i.totalSummSub) }}</td>
 
 
 
@@ -89,6 +93,8 @@ PO.html
 
 
 
+
+
                 </div>
             </div>
         </div>
@@ -99,17 +105,39 @@ PO.html
 
                     <div ng-if="currentUser.role == 'admin'">
 
-                        <button style="margin: 0px 0px 15px 0px;" class="btn btn-sm btn-outline-danger" type="button" ng-click="setConfirmDeletePO()" ng-hide="hideDeleteButton">Подтвердить удаление проекта</button>
+                        <button style="margin: 0px 0px 15px 0px;" class="btn btn-sm btn-outline-danger" type="button" ng-click="setConfirmDeletePO()"
+                            ng-hide="hideDeleteButton">Подтвердить удаление проекта</button>
 
 
                         <div class="input-group ">
                             <input type="text" ng-model="PO" required class="form-control" placeholder="номер проекта">
 
                             <span class="input-group-btn">
-                             <button class="btn btn-sm btn-outline-primary" type="button" ng-click="postNewPO(PO)">Добавить проект</button>
-                        </span>
+                                <button class="btn btn-sm btn-outline-primary" type="button" ng-click="postNewPO(PO)">Добавить проект</button>
+                            </span>
 
                         </div>
+
+
+                        <div class="padding_userAdd">
+                         
+                            <form name="myForm">
+                                <div class=" input-group ">
+                                    <input name="email"  type="email" ng-model="email"  required class="form-control" placeholder="email">
+                                    <input name="password" type="password" ng-model="password" required class="form-control" placeholder="password">
+                                    <input name="text" type="text" ng-model="role" required class="form-control" placeholder="role: user/admin">
+
+                                   
+                                    <span class="input-group-btn">
+                                        
+                                        <button ng-if="myForm.email.$valid == true && myForm.password.$valid == true && myForm.text.$valid == true"   class="btn btn-sm btn-outline-warning" type="submit" ng-click="postNewUser(email,password,role)">Отправить</button>
+                                    </span>                                   
+
+
+                                </div>
+                            </form>
+                        </div>
+
 
 
                     </div>

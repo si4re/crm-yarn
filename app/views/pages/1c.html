@@ -21,11 +21,11 @@
 
 <div>
 
-    1c.html {{message}}
+  <!--!  1c.html {{message}}   -->
 
 
 </div>
-<!--!!!!!!!!!!!!!!!!!!!!!!! -->
+<!--! !!!!!!!!!!!!!!!!!!!!!! -->
 <div ng-controller="urlattrController">
     <!-- for file upload download -->
 
@@ -125,7 +125,7 @@
 
 
                     <table class="table table-responsive table-sm table-bordered">
-                        <div class="text-muted padding"> Отчет для 1с в Excel: </div>
+                        <div class="text-muted padding"> Приложить ПТС, фото обследования (архив), отчет для 1с в Excel: </div>
                         <tr ng-repeat="i in ListFilesFromCloud">
 
                             <td>
@@ -180,7 +180,7 @@
                         <input id="checkboxCMR" type="checkbox" class="custom-control-input" ng-change="checkboxCMRUpdate(checkboxCMR)" ng-model="checkboxCMR"
                             ng-checked="CMRStatus">
                         <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">СМР выполнены</span>
+                        <span class="custom-control-description">ППО выполнено</span>
                     </label>
 
 
@@ -188,7 +188,7 @@
                         <input id="checkboxPNR" type="checkbox" class="custom-control-input" ng-change="checkboxPNRUpdate(checkboxPNR)" ng-model="checkboxPNR"
                             ng-checked="PNRStatus">
                         <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description">ПНР выполнены</span>
+                        <span class="custom-control-description">СМР + ПНР выполнены</span>
                     </label>
                 
 

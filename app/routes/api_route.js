@@ -23,16 +23,24 @@ module.exports = function(app) {
     apiRoutes.use('/auth', authRoutes);
 
     authRoutes.post('/', function(req, res) {
-        res.status(201).send("post / ok");
+
+        console.log(req.body);
+
+        res.status(201).send(JSON.stringify(req.body)+ " post / ok");
     });
 
 
     authRoutes.post('/register', AuthenticationController.register);
+
+
+
     authRoutes.post('/login', requireLogin, AuthenticationController.login);
 
     authRoutes.get('/protected', requireAuth, function(req, res) {
         res.send({ content: 'Success' });
     });
+
+
 
     var reqSendUser = function(req, res) {
         res.send({ content: 'user Success' });
@@ -49,6 +57,8 @@ module.exports = function(app) {
 
         next();
     }
+
+
 
 
     // Set up routes
