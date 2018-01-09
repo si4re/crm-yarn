@@ -25,3 +25,28 @@ db.projects.find({ _id: '555'}, {'oneC': { "$elemMatch": { 'number': '9258996' }
 var query = { 'files.filename': id };
 var protection = { files: { $elemMatch: { filename: id } }, _id: 0, 'files.originalFileName': 1 };
 
+
+----------------------------------------
+for aws:
+
+install nodejs:
+
+	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+	sudo apt-get install -y nodejs
+
+
+sudo npm install -g yarn
+
+git clone https://github.com/si4re/crm-yarn.git
+
+cd crm-yarn/
+
+yarn install
+
+sudo npm install -g gulp
+
+gulp dev
+
+sudo npm install forever -g
+
+
